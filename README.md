@@ -7,4 +7,5 @@ The algorithm:
   * Random walker sticks to the neighbouring sites of the seed/previous points.
   * Repeat N times.
 
-![Run of N = 100 on a 120 x 120 size lattice.](/images/dla_dendrite_growth_N1000.png)
+![Run of N = 1000 on a 120x120 size lattice.](/images/dla_dendrite_growth_N1000.png)
+Run of N = 1000 on a 120x120 size lattice.
