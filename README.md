@@ -8,4 +8,5 @@ The algorithm:
   * Repeat N times.
 
 Run of N = 1000 on a 120x120 size lattice:
+
 ![Run of N = 1000 on a 120x120 size lattice.](/images/dla_dendrite_growth_N1000.png)
