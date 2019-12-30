@@ -1,4 +1,5 @@
 # Diffusion-limited aggregation algorithm
+([Wikipedia.](https://en.wikipedia.org/wiki/Diffusion-limited_aggregation))
 
 The algorithm:
   * Place a seed at the center of the lattice.
