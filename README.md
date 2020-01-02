@@ -1,5 +1,6 @@
 # Diffusion-limited aggregation algorithm
-([Wikipedia.](https://en.wikipedia.org/wiki/Diffusion-limited_aggregation))
+
+Diffusion-limited aggregation effectively describes a system where diffusion is the primary way of transportation, so that particles moving via Brownian motion cluster together forming aggregates, or Brownian trees ([Wikipedia.](https://en.wikipedia.org/wiki/Diffusion-limited_aggregation)). This program is an attempt to implement this algorithm in a simple 2D case.
 
 The algorithm:
   * Place a seed at the center of the lattice.
