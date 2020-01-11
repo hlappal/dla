@@ -12,11 +12,13 @@
 
 import numpy as np
 import matplotlib.pyplot as plt
+import time
 
-latt = [h, w] = [120, 120]  # height and width of the lattice
-N = 1000                    # number of random walkers
+start = time.time()
+latt = [h, w] = [60, 60]    # height and width of the lattice
+N = 100                     # number of random walkers
 lattice = np.zeros((h, w)).astype(int)  # initialize empty lattice
-lattice[h//2, w//2] = 1                 # initial seedd point
+lattice[h//2, w//2] = 1                 # initial seed point
 neighbors = []                          # the list of neighboring sites
 # add the initial neighboring sites
 neighbors.append([h//2 + 1, w//2])
@@ -26,7 +28,7 @@ neighbors.append([h//2, w//2 - 1])
 
 def randomWalk(pos, lattice):
     """Perform a random walk from given point until contact"""
-    
+
     while True:
         i = np.random.randint(2)  # choose vertical or horizontal movement
         pos[i] += np.random.randint(-1,2)  # choose direction and move
@@ -50,7 +52,7 @@ def randomWalk(pos, lattice):
             return lattice
 
 for i in range(N):
-    print('Running random walker #{}'.format(i+1))
+    print('Random walker #{}'.format(i+1))
     # choose the starting position of the random walker
     pos = [x, y] = [np.random.randint(w), np.random.randint(h)]
     i = np.random.randint(2)  # choose either the x or y axis
@@ -63,8 +65,12 @@ for i in range(N):
     # run random walk from the chosen site
     lattice = randomWalk(pos, lattice)
 
+stop =  time.time()
+print('Finished in {:.4f} seconds'.format(stop - start))
+
 # simple plot
 plt.matshow(lattice)
 plt.xticks(ticks=[], labels=None)
 plt.yticks(ticks=[], labels=None)
 plt.show()
+
