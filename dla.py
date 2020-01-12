@@ -16,9 +16,13 @@ import time
 
 start = time.time()
 latt = [h, w] = [60, 60]    # height and width of the lattice
-N = 100                     # number of random walkers
+N = 500                     # number of random walkers
+sticking_factor = 0.1       # sticking factor defines the probability of
+                            #  sticking during contact
+
 lattice = np.zeros((h, w)).astype(int)  # initialize empty lattice
 lattice[h//2, w//2] = 1                 # initial seed point
+
 neighbors = []                          # the list of neighboring sites
 # add the initial neighboring sites
 neighbors.append([h//2 + 1, w//2])
@@ -41,15 +45,19 @@ def randomWalk(pos, lattice):
             continue
         # check for contact
         if pos in neighbors:
-            # add the neighboring sites to the list
-            for site in [[pos[0] + 1, pos[1]],
-                         [pos[0] - 1, pos[1]],
-                         [pos[0], pos[1] + 1],
-                         [pos[0], pos[1] - 1]]:
-                if site not in neighbors:  # prevent double counting
-                    neighbors.append(site)
-            lattice[pos[0], pos[1]] = 1
-            return lattice
+            # sticking occurs according to the sticking factor
+            if np.random.rand() < sticking_factor:
+                # add the neighboring sites to the list
+                for site in [[pos[0] + 1, pos[1]],
+                             [pos[0] - 1, pos[1]],
+                             [pos[0], pos[1] + 1],
+                             [pos[0], pos[1] - 1]]:
+                    if site not in neighbors:  # prevent double counting
+                        neighbors.append(site)
+                lattice[pos[0], pos[1]] = 1
+                return lattice
+            else:
+                continue
 
 for i in range(N):
     print('Random walker #{}'.format(i+1))
